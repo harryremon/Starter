@@ -15,7 +15,10 @@ namespace Starter
         static void Main(string[] args)
         {
             if (!args.Any())
+            {
                 PrintHelp(HelpType.All);
+                return;
+            }
             switch (args.FirstOrDefault().ToLower())
             {
                 #region Help
@@ -48,16 +51,20 @@ namespace Starter
                         var param = args[1].ToLower();
                         var result = programList.Where(program => program.Title.ToLower().Contains(param)).ToList();
                         if (!result.Any())
-                            Console.WriteLine("Application Not Found");
-                        else if (result.Count() == 1)
+                        {
+                            Console.WriteLine("Application Not Found"); //TODO:Move strings to constants
+                            return;
+                        }
+                        if (result.Count() == 1)
                         {
                             var executePath = result.FirstOrDefault().ExecutePath;
-                            var process = new Process { StartInfo = { FileName = executePath } };
+                            var process = new Process {StartInfo = {FileName = executePath}};
                             process.Start();
+                            return;
                         }
-                        else if (result.Count() > 1)
+                        if (result.Count() > 1)
                         {
-                            Console.WriteLine("Found Multiple Entries, Please choose which application to start.");
+                            Console.WriteLine("Found Multiple Entries, Please choose which application to start."); //TODO:Move strings to constants
                             var index = 0;
                             foreach (var program in result)
                             {
@@ -68,27 +75,23 @@ namespace Starter
                             int choosenIndex;
                             var converted = int.TryParse(choosenIndexString, out choosenIndex);
                             if (!converted)
-                                Console.WriteLine("Wrong Parameter");
-                            else
                             {
-                                if (choosenIndex < 0 || choosenIndex > index)
-                                    Console.WriteLine("Wrong Parameter");
-                                else
-                                {
-                                    var executePath = result[choosenIndex].ExecutePath;
-                                    var process = new Process { StartInfo = { FileName = executePath } };
-                                    process.Start();
-                                }
+                                Console.WriteLine("Wrong Parameter"); //TODO:Move strings to constants
+                                return;
                             }
+                            if (choosenIndex < 0 || choosenIndex > index)
+                            {
+                                Console.WriteLine("Wrong Parameter"); //TODO:Move strings to constants
+                                return;
+                            }
+                            var executePath = result[choosenIndex].ExecutePath;
+                            var process = new Process {StartInfo = {FileName = executePath}};
+                            process.Start();
                         }
                     }
                     break;
                     #endregion
             }
-
-            #if DEBUG
-            Console.ReadKey();
-            #endif
         }
 
         static void PrintHelp(HelpType type)
@@ -96,10 +99,14 @@ namespace Starter
             switch (type)
             {
                 case HelpType.All:
-                    Console.WriteLine("Help Goes Here");
+                    Console.WriteLine("Usage:" +
+                                      "\nStarter (No Parameters): Shows help command, same as \"help\", \"h\", or \" ? \"." +
+                                      "\nStarter help / h / ? : Shows help command.\nStarter list: lists all reachable(indexable) applications on your machine." +
+                                      "\nStarter start [Application Name]: Starts an application, or shows a list of applications to choose from in case of multiple results.");
                     break;
                 case HelpType.Start:
-                    Console.WriteLine("Start Help Goes Here");
+                    Console.WriteLine("Usage:" +
+                                      "\nStarter start[Application Name]: Starts an application, or shows a list of applications to choose from in case of multiple results.");
                     break;
             }
         }
