@@ -12,7 +12,7 @@ Starter help / h / ? : Shows help command.
 
 Starter list : lists all reachable (indexable) applications on your machine.
 
-Starter Start [Application Name]: Starts an application, or shows a list of applications to choose from in case of multiple results.
+Starter start [Application Name]: Starts an application, or shows a list of applications to choose from in case of multiple results.
 
 # Desclaimers
 
