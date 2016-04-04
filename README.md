@@ -1,4 +1,4 @@
-# Starter (Alpha)
+# Starter (Pre-alpha)
 A Small command app that runs any installed application on your windows machine by it's name.
 
 # Installation
@@ -16,6 +16,6 @@ Starter start [Application Name]: Starts an application, or shows a list of appl
 
 # Desclaimers
 
-**Alpha Notice**: This Application is in Alpha state, meaning the application is not throughly finished / tested ... it might be unstable, you might face bugs or uncomplete features. Use At Your Own Risk.
+**Alpha Notice**: This Application is in pre-alpha stage, meaning the application is not throughly finished / tested ... it might be unstable, you might face bugs or uncomplete features. Use At Your Own Risk.
 
 **Code Reuse**: Some of the Indexing code in the project is reused from the [**Wox**](http://www.getwox.com/) Project, Under their [MIT License](https://github.com/Wox-launcher/Wox/blob/master/LICENSE).
