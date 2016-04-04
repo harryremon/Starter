@@ -6,13 +6,13 @@ Just copy the output application and the StarterLibrary DLL to any directoy in y
 
 # Usage
 
-Starter (No Parameters): Shows help command, same as "help", "h", or "?".
+`Starter` (No Parameters): Shows help command, same as "help", "h", or "?".
 
-Starter help / h / ? : Shows help command.
+`Starter help / h / ?` : Shows help command.
 
-Starter list : lists all reachable (indexable) applications on your machine.
+`Starter list` : lists all reachable (indexable) applications on your machine.
 
-Starter start [Application Name]: Starts an application, or shows a list of applications to choose from in case of multiple results.
+`Starter start [ApplicationName]`: Starts an application, or shows a list of applications to choose from in case of multiple results.
 
 # Desclaimers
 
